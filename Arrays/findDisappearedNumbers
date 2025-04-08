@@ -1,0 +1,48 @@
+import java.util.*;
+
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        HashSet<Integer> seen = new HashSet<>();
+        List<Integer> result = new ArrayList<>();
+        int n = nums.length;
+
+        // Step 1: Add all elements to the set
+        for (int num : nums) {
+            seen.add(num);
+        }
+
+        // Step 2: Check which numbers from 1 to n are missing
+        for (int i = 1; i <= n; i++) {
+            if (!seen.contains(i)) {
+                result.add(i);
+            }
+        }
+
+        return result;
+    }
+}
+ Explanation with Example:
+java
+Copy
+Edit
+nums = [4,3,2,7,8,2,3,1]
+Step 1: Put into Set
+
+ini
+Copy
+Edit
+seen = {1,2,3,4,7,8}
+Step 2: Check 1 to 8
+
+sql
+Copy
+Edit
+1 → in set ✅
+2 → in set ✅
+3 → in set ✅
+4 → in set ✅
+5 → ❌ → add to result
+6 → ❌ → add to result
+7 → in set ✅
+8 → in set ✅
+✅ Output: [5, 6]
